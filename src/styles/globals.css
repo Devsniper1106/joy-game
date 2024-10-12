@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: linear-gradient(to bottom, #E6EAFF, #8696E7);
+   --foreground: 226 70% 1%;
+    --muted: 196 11% 86%;
+    --muted-foreground: 196 11% 29%;
+    --popover: 226 68% 98%;
+    --popover-foreground: 226 70% 0%;
+    --card: 226 68% 98%;
+    --card-foreground: 226 70% 0%;
+    --border: 226 12% 92%;
+    --input: 226 12% 92%;
+    --primary: 226 94% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 256 94% 49%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 343 99% 57%;
+    --accent-foreground: 343 99% 97%;
+    --destructive: 2 98% 49%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 226 94% 49%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: linear-gradient(to bottom, #364AB3, #00020D);
+    --foreground: 226 26% 100%;
+    --muted: 196 11% 14%;
+    --muted-foreground: 196 11% 71%;
+    --popover: 0 0% 1%;
+    --popover-foreground: 0 0% 100%;
+    --card: 0 0% 1%;
+    --card-foreground: 0 0% 100%;
+    --border: 226 12% 12%;
+    --input: 226 12% 12%;
+    --primary: 226 94% 49%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 343 99% 57%;
+    --accent-foreground: 343 99% 97%;
+    --secondary: 256 94% 71%;
+    --secondary-foreground: 0 0% 100%;
+    --destructive: 2 98% 49%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 226 94% 49%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+.my-masonry-grid {
+  display: flex;
+  margin-left: -30px; /* Adjust based on your layout */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 30px; /* Adjust based on your layout */
+  background-clip: padding-box;
+}
