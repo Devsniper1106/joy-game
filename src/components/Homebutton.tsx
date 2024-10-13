@@ -18,7 +18,7 @@ const HomeButton: React.FC = () => {
     <Link href="/" passHref>
       <button className="flex items-center p-4 cursor-pointer border-none bg-transparent text-[48px]">
         <Image src={faHome} alt="Home" className="mr-6 h-[72px] w-[72px]" width={72} height={72} />
-        <span className={`${textColor} transition-colors duration-300`}>Home</span>
+        <span className={`${textColor} transition-colors duration-300 max-sm:hidden`}>Home</span>
       </button>
     </Link>
   );
