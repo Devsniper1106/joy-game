@@ -6,11 +6,13 @@ import { Providers } from '@lib/providers/providers'
 import { inter, lexend } from '@app/fonts'
 import { cn } from '@lib/utils'
 import '@styles/globals.css'
+import { ThemeProvider } from 'next-themes'
+import { BgTheme } from '@/lib/providers/bgTheme'
 
 export const metadata: Metadata = {
-  title: "Gamer Joy",
-  description: "Gamer Joy, just enjoy",
-};
+  title: 'Gamer Joy',
+  description: 'Gamer Joy, just enjoy',
+}
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -38,10 +40,11 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <Header />
-       
-          {children}
-          <Footer />
+          <BgTheme>
+            <Header />
+            {children}
+            <Footer />{' '}
+          </BgTheme>
         </Providers>
       </body>
     </html>
