@@ -6,6 +6,7 @@ import { Providers } from '@lib/providers/providers'
 import { inter, lexend } from '@app/fonts'
 import { cn } from '@lib/utils'
 import '@styles/globals.css'
+import { BgTheme } from '@/lib/providers/bgTheme'
 
 export const metadata: Metadata = {
   title: "Gamer Joy",
@@ -38,10 +39,14 @@ export default function RootLayout({
         )}
       >
         <Providers>
+          <BgTheme>
+
+
           <Header />
        
           {children}
           <Footer />
+          </BgTheme>
         </Providers>
       </body>
     </html>
