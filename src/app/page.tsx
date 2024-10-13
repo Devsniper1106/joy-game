@@ -12,7 +12,7 @@ export default function Home() {
             key={index}
             className={` row-span-${card.rowNum} col-span-${card.colNum}`}
           >
-            <Card imageUrl={card.imageUrl} detailUrl={card.detailUrl} />
+            <Card imageUrl={card.imageUrl} gameName={card.gameName} />
           </div>
         ))}
       <div className='row-span-2'></div>
