@@ -34,15 +34,16 @@ const Page: React.FC = () => {
 
     fetchGameList();
   }, []);
-
+ 
   if (loading) {
-    return <div className="h-screen">Loading...</div>;
+    return <div 
+    className={`h-screen ${theme ==='dark'?'bg-gradient-to-b from-[#364AB3] to-[#00020D]':' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'}`}>Loading...</div>;
   }
 
   if (error) {
     return <div>{error}</div>;
   }
-
+ console.log('theme---->', theme)
   return (
     <div className={`h-screen w-screen ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}>
       <div className="max-sm:hidden">

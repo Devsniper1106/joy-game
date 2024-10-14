@@ -5,12 +5,13 @@ import Header from '@/components/shared/header'
 import Footer from '@/components/shared/footer'
 import { TGameItemDto } from '@/lib/types/api/model/game'
 import { getGameList } from '@/actions/getGameList'
+import { useTheme } from 'next-themes'
 
 export default function Home() {
   const [gameItems, setGameItems] = useState<TGameItemDto[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
+  const { theme } = useTheme()
   useEffect(() => {
     const fetchGameList = async () => {
       const response = await getGameList()
@@ -24,9 +25,20 @@ export default function Home() {
 
     fetchGameList()
   }, [])
+  console.log('theme---->', theme)
   // console.log('length---->', gameItems)
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <div
+        className={`h-screen ${
+          theme === 'dark'
+            ? 'bg-gradient-to-b from-[#364AB3] to-[#00020D]'
+            : ' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'
+        }`}
+      >
+        Loading...
+      </div>
+    )
   }
 
   if (error) {
@@ -34,10 +46,16 @@ export default function Home() {
   }
 
   return (
-    <div className="">
+    <div
+      className={`${
+        theme === 'dark'
+          ? 'bg-gradient-to-b from-[#364AB3] to-[#00020D]'
+          : ' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'
+      }`}
+    >
       <Header />
-      <main className="w-[1512px] md:px-[120px] md:py-[58px] px-[28px] py-[24px] mx-auto">
-        <div className="grid w-full h-full grid-flow-dense grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
+      <main className="md:px-[120px] md:py-[58px] px-[28px] py-[24px] ">
+        <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:gap-10 lg:w-4/5 lg:mx-auto gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
           {gameItems.map((card) => (
             <div
               key={card.id}
