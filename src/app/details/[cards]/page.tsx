@@ -24,13 +24,16 @@ const page = () => {
         <div className="w-full ">
           <div className={`flex sm:h-[300px]  lg:min-w-[600px] sm:max-w-[800px] gap-5  px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] ${theme==='dark'?'bg-[#0206177A]':' bg-[#9FB0FD7A]'}
            rounded-[36px]`}>
+            <div className='w-1/2 flex align-middle'>
+
             <Card
               imageUrl="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25"
               gameName=""
             ></Card>
-            <div className='w-1/2'>
-              <div className="font-normal text-[20px] sm:text-[32px] mb-8">Game Name</div>
-              <Link href={`/play/${gameName}`} className={`flex  items-center px-4 sm:px-12 py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${theme==='dark'?'bg-[#6366F14D]':' bg-[#9FB0FD7A]'}`}>
+            </div>
+            <div className=''>
+              <div className="font-medium text-[20px] sm:text-[32px] mb-8">Game Name</div>
+          <Link href={`/play/${gameName}`} className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${theme==='dark'?'bg-[#6366F14D]':' bg-[#9FB0FD7A]'}`}>
                 <Image
                   alt="button"
                   className="place-items-center  sm:h-[36px]  sm:w-[36px]"
