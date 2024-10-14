@@ -32,7 +32,7 @@ export const Menu = () => {
         </button>
         {show && (
           <div
-            className={`absolute top-16 -right-6 w-28 flex flex-col gap-2 ${
+            className={`absolute top-16 -right-2 w-28 flex flex-col gap-2 ${
               theme === 'dark' ? 'text-white bg-[#1E2854]':'text-[#0C4A6E] bg-[#CEDAED] '
             }  text-[18px] rounded-sm p-2 z-30`}
             onClick={() => setShow(false)}
