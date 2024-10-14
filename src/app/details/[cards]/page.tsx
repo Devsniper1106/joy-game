@@ -39,15 +39,14 @@ const page = () => {
 
     fetchGameList()
   }, [])
-  // console.log('length---->', gameItems)
+  console.log('theme---->', theme)
   if (loading) {
-    return <div className='h-screen'>Loading...</div>
+    return <div className={`h-screen ${theme ==='dark'?'bg-gradient-to-b from-[#364AB3] to-[#00020D]':' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'}`}>Loading...</div>
   }
 
   if (error) {
     return <div>{error}</div>
   }
-
   return (
     <div
       className={`px-8 ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}
