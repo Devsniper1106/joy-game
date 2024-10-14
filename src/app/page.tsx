@@ -24,7 +24,7 @@ export default function Home() {
 
     fetchGameList()
   }, [])
-  console.log('length---->', gameItems)
+  // console.log('length---->', gameItems)
   if (loading) {
     return <div>Loading...</div>
   }

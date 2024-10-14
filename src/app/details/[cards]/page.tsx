@@ -23,6 +23,9 @@ const page = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const pathName = usePathname()
+  const endpoint = pathName.split('/').pop()
+  const selectedGameItem = gameItems.find((item) => item.name === endpoint);
   useEffect(() => {
     const fetchGameList = async () => {
       const response = await getGameList()
@@ -45,9 +48,6 @@ const page = () => {
     return <div>{error}</div>
   }
 
-  const pathName = usePathname()
-  const endpoint = pathName.split('/').pop()
-  const selectedGameItem = gameItems.find((item) => item.name === endpoint);
   return (
     <div
       className={`px-8 ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}
@@ -63,7 +63,7 @@ const page = () => {
             <div className="w-1/2 flex align-middle">
               <Card
                 icon_url={`${selectedGameItem?.icon_url}`}
-                name=""
+                name={`${selectedGameItem?.name}`}
               ></Card>
             </div>
             <div className="">
@@ -71,7 +71,7 @@ const page = () => {
                 {endpoint}
               </div>
               <Link
-                href={`/play/${name}`}
+                href={`/play/${selectedGameItem?.name}`}
                 className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${
                   theme === 'dark' ? 'bg-[#6366F14D]' : ' bg-[#9FB0FD7A]'
                 }`}
