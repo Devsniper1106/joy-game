@@ -8,20 +8,32 @@ import Image from 'next/image';
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
-  // const [mounted, setMounted] = useState(false);
-  // useEffect(() => {
-	// 	setMounted(true);
+  // const [darkTheme, setDarkTheme] = useState(true);
+
+	// useEffect(() => {
+	// 	const theme = localStorage.getItem('theme');
+	// 	if (theme === 'dark') {
+	// 		setDarkTheme(true);
+	// 	} else {
+	// 		setDarkTheme(false);
+	// 	}
 	// }, []);
 
-	// if (!mounted) {
-	// 	return null;
-	// }
+	// useEffect(() => {
+	// 	if (darkTheme) {
+	// 		document.documentElement.classList.add('dark');
+	// 		localStorage.setItem('theme', 'dark');
+	// 	} else {
+	// 		document.documentElement.classList.remove('dark');
+	// 		localStorage.setItem('theme', 'light');
+	// 	}
+	// }, [darkTheme]);
 
   return (
     
           <button
             className="p-2 max-sm:hidden"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() =>{setTheme(theme === 'light' ? 'dark':'light')} }
             aria-label="Switch theme"
           >
             {theme !== 'dark' ? (
