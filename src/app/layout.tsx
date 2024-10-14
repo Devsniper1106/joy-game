@@ -6,7 +6,9 @@ import { Providers } from '@lib/providers/providers'
 
 
 import '@styles/globals.css'
+
 import { ThemeProvider } from 'next-themes'
+
 import { BgTheme } from '@/lib/providers/bgTheme'
 
 export const metadata: Metadata = {
@@ -37,9 +39,11 @@ export default function RootLayout({
       >
         <Providers>
           <BgTheme>
+
             <Header />
             {children}
             <Footer />{' '}
+
           </BgTheme>
         </Providers>
       </body>

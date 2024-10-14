@@ -20,7 +20,7 @@ export function ThemeToggle() {
   return (
     
           <button
-            className="p-2"
+            className="p-2 max-sm:hidden"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             aria-label="Switch theme"
           >
