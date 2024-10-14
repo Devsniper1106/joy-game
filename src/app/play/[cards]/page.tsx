@@ -66,11 +66,11 @@ const Page: React.FC = () => {
             <div>No game selected.</div>
           )}
         </div>
-        <div className="w-full sm:p-4 overflow-x-scroll overflow-y-hidden sm:overflow-hidden sm:overflow-y-scroll h-[110px] sm:px-2 sm:h-full sm:w-[280px]">
-          <div className="flex align-middle flex-row h-[80px] w-[80px] gap-2 sm:gap-4 sm:p-8  sm:flex-col sm:w-full sm:h-fit">
+        <div className="w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[110px] sm:px-2 sm:h-full sm:w-[280px]">
+          <div className="flex align-middle flex-row flex-nowrap  gap-2 sm:gap-4 sm:p-8  sm:flex-col sm:w-full sm:h-fit">
             {gameItems.map((card) => (
-              <div key={card.id}>
-                <Card icon_url={card.icon_url} name={card.name} />
+              <div key={card.id} className=' '>
+                <Card icon_url={card.icon_url} name={card.name} className='max-sm:h-[80px] max-sm:w-[80px]'/>
               </div>
             ))}
           </div>
