@@ -1,9 +1,13 @@
+import { PRIVACY_POLICY_LINK_PATH } from '@/lib/config'
+import '@styles/globals.css'
+
 const page = () => {
-    return (<>
-    
-    <div className="flex justify-center">this is privacy page.
-      </div></>);
-  }
-  
-  export default page
-   
+  return (
+    <iframe
+      src={PRIVACY_POLICY_LINK_PATH}
+      className="fullScreenIFrameWithHeaderSpacing"
+    />
+  )
+}
+
+export default page

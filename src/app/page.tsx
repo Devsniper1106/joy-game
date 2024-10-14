@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <div className=''>
+    <div className="">
       <Header />
       <main className="w-[1512px] md:px-[120px] md:py-[58px] px-[28px] py-[24px] mx-auto">
         <div className="grid w-full h-full grid-flow-dense grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
@@ -42,10 +42,12 @@ export default function Home() {
             <div
               key={card.id}
               className={`${
-                card.is_hot ? 'col-span-2 row-span-2 ' : 'col-span-1 row-span-1 '
+                card.is_hot
+                  ? 'col-span-2 row-span-2 '
+                  : 'col-span-1 row-span-1 '
               }`}
             >
-              <Card className='' icon_url={card.icon_url} name={card.name} />
+              <Card className="" icon_url={card.icon_url} name={card.name} />
             </div>
           ))}
           {/* Additional empty grid cells can go here if needed */}
