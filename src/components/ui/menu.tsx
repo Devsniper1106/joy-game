@@ -23,7 +23,7 @@ export const Menu = () => {
       <div className="relative sm:hidden flex flex-col ">
         {/* <img
           id="theme"
-          src={`${theme === 'dark' ? 'menu2' : 'menu'}.svg`}
+          src={`${theme == 'dark' ? 'menu2' : 'menu'}.svg`}
           className="cursor-pointer"
           onClick={() => setShow(!show)}
         /> */}
@@ -33,7 +33,7 @@ export const Menu = () => {
         {show && (
           <div
             className={`absolute top-16 -right-6 w-28 flex flex-col gap-2 ${
-              theme === 'dark' ? 'text-white bg-[#1E2854]':'text-[#0C4A6E] bg-[#CEDAED] '
+              theme == 'dark' ? 'text-white bg-[#1E2854]':'text-[#0C4A6E] bg-[#CEDAED] '
             }  text-[18px] rounded-sm p-2 z-30`}
             onClick={() => setShow(false)}
           >
@@ -41,7 +41,7 @@ export const Menu = () => {
               className="flex gap-2 cursor-pointer"
               onClick={() => router.push('/')}
             >
-              {/* {theme === 'dark' ? (
+              {/* {theme == 'dark' ? (
                 <img src="home2.svg" />
               ) : (
                 <img src="home.svg" />
@@ -51,15 +51,15 @@ export const Menu = () => {
             </div>
             <div
               className="flex gap-2 cursor-pointer"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
             >
-              {/* {theme === 'dark' ? (
+              {/* {theme == 'dark' ? (
                 <img src="light2.svg" />
               ) : (
                 <img src="light.svg" />
               )} */}
               <ThemeIcon />
-              <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+              <span>{theme == 'dark' ? 'Dark' : 'Light'}</span>
             </div>
           </div>
         )}

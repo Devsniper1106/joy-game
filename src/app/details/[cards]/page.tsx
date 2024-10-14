@@ -4,7 +4,7 @@
 // const cardId = useParams();
 // useEffect get(api/v1, cardId);
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '@/components/ui/card'
 import cardData from '../../../../public/data/cardData.json'
 
@@ -16,14 +16,27 @@ import Link from 'next/link'
 
 
 const page = () => {
-  const {theme}=useTheme()
+  const {theme,setTheme}=useTheme()
+  // const { setTheme, theme } = useTheme();
+
+  // Set the theme based on local storage when the component mounts
+  useEffect(() => {
+    console.log("theme☎",theme)
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+    
+    console.log("theme☎",theme)
+  }, []);
+ 
+ 
   const gameName="alpha"
   return (
-    <div className={`px-8 ${theme==='dark'? 'text-white' :'text-[#312E81]'}`}>
+    <div className="px-8 dark:text-white text-[#312E81]">
       <div className="flex flex-col justify-between gap-4 sm:gap-8 lg:flex-row w-full">
         <div className="w-full ">
-          <div className={`flex sm:h-[300px]  lg:min-w-[600px] sm:max-w-[800px] gap-5  px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] ${theme==='dark'?'bg-[#0206177A]':' bg-[#9FB0FD7A]'}
-           rounded-[36px]`}>
+          <div className="flex sm:h-[300px]  lg:min-w-[600px] sm:max-w-[800px] gap-5  px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] dark:bg-[#0206177A] bg-[#9FB0FD7A] rounded-[36px]">
             <div className='w-1/2 flex align-middle'>
 
             <Card
@@ -33,11 +46,17 @@ const page = () => {
             </div>
             <div className=''>
               <div className="font-medium text-[20px] sm:text-[32px] mb-8">Game Name</div>
-          <Link href={`/play/${gameName}`} className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${theme==='dark'?'bg-[#6366F14D]':' bg-[#9FB0FD7A]'}`}>
+          <Link href={`/play/${gameName}`} className="flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] dark:bg-[#6366F14D] bg-[#9FB0FD7A]">
                 <Image
                   alt="button"
-                  className="place-items-center  sm:h-[36px]  sm:w-[36px]"
-                  src={theme==='dark'?ButtoniconMoon:ButtoniconSun}
+                  className="place-items-center  sm:h-[36px]  sm:w-[36px] dark:block hidden"
+                    src={ ButtoniconMoon }
+                />
+                <Image
+                  alt="button"
+                  className="place-items-center  sm:h-[36px]  sm:w-[36px] dark:hidden"
+                
+                  src={ButtoniconSun}
                 />
                 <div className="font-extrabold text-[20px] sm:text-[32px]  ">Play</div>
               </Link>

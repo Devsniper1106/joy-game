@@ -21,7 +21,7 @@ const page = () => {
   const {theme}=useTheme()
   const gameName="alpha"
   return (
-    <div className={`h-[100vh] w-screen  ${theme==='dark'? 'text-white' :'text-[#312E81]'}`}>
+    <div className={`h-[100vh] w-screen  ${theme=='dark'? 'text-white' :'text-[#312E81]'}`}>
       <div className='max-sm:hidden'><Header/>
         </div>
       <div className='absolute top-4 right-4 '><Menu/>
