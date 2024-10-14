@@ -4,7 +4,7 @@
 // const cardId = useParams();
 // useEffect get(api/v1, cardId);
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@/components/ui/card'
 import cardData from '../../../../public/data/cardData.json'
 
@@ -13,10 +13,41 @@ import ButtoniconSun from '../../../../public/buttonIconSun.svg'
 import ButtoniconMoon from '../../../../public/buttonIconMoon.svg'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import { TGameItemDto } from '@/lib/types/api/model/game'
+import { getGameList } from '@/actions/getGameList'
+import { usePathname } from 'next/navigation'
 
 const page = () => {
   const { theme } = useTheme()
-  const name = 'alpha'
+  const [gameItems, setGameItems] = useState<TGameItemDto[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchGameList = async () => {
+      const response = await getGameList()
+      if (response.success) {
+        setGameItems(response.data)
+      } else {
+        setError(`Error fetching game list: ${response.code}`)
+      }
+      setLoading(false)
+    }
+
+    fetchGameList()
+  }, [])
+  console.log('length---->', gameItems)
+  if (loading) {
+    return <div className='h-screen'>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error}</div>
+  }
+
+  const pathName = usePathname()
+  const endpoint = pathName.split('/').pop()
+  const selectedGameItem = gameItems.find((item) => item.name === endpoint);
   return (
     <div
       className={`px-8 ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}
@@ -31,13 +62,13 @@ const page = () => {
           >
             <div className="w-1/2 flex align-middle">
               <Card
-                icon_url="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25"
+                icon_url={`${selectedGameItem?.icon_url}`}
                 name=""
               ></Card>
             </div>
             <div className="">
               <div className="font-medium text-[20px] sm:text-[32px] mb-8">
-                Game Name
+                {endpoint}
               </div>
               <Link
                 href={`/play/${name}`}
@@ -62,10 +93,14 @@ const page = () => {
             Enjoy Other Games
           </div>
           <div className="grid grid-cols-3 grid-flow-dense gap-x-3 gap-y-2 sm:gap-x-8 sm:gap-y-4 lg:grid-cols-2  xl:grid-cols-3 ">
-            {cardData.map((card, index) => (
+            {gameItems.map((card) => (
               <div
-                key={index}
-                className={` row-span-${card.rowNum} col-span-${card.colNum}`}
+                key={card.id}
+                className={`${
+                  card.is_hot
+                    ? 'col-span-2 row-span-2'
+                    : 'col-span-1 row-span-1'
+                }`}
               >
                 <Card icon_url={card.icon_url} name={card.name} />
               </div>

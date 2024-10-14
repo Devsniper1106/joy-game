@@ -23,9 +23,8 @@ export default function Home() {
     }
 
     fetchGameList()
-    console.log('length---->', gameItems.length)
   }, [])
-
+  console.log('length---->', gameItems)
   if (loading) {
     return <div>Loading...</div>
   }
@@ -43,7 +42,7 @@ export default function Home() {
             <div
               key={card.id}
               className={`${
-                card.is_hot ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
+                card.is_hot ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1'
               }`}
             >
               <Card icon_url={card.icon_url} name={card.name} />
