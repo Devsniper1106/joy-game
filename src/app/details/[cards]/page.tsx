@@ -39,7 +39,7 @@ const page = () => {
 
     fetchGameList()
   }, [])
-  console.log('length---->', gameItems)
+  // console.log('length---->', gameItems)
   if (loading) {
     return <div className='h-screen'>Loading...</div>
   }
