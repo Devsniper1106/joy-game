@@ -71,7 +71,7 @@ const page = () => {
               </div>
               <Link
                 href={`/play/${selectedGameItem?.name}`}
-                className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${
+                className={`flex w-fit items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${
                   theme === 'dark' ? 'bg-[#6366F14D]' : ' bg-[#9FB0FD7A]'
                 }`}
               >
