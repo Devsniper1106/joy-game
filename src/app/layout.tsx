@@ -3,8 +3,8 @@ import Header from '@components/shared/header'
 
 import type { Metadata, Viewport } from 'next'
 import { Providers } from '@lib/providers/providers'
-import { inter, lexend } from '@app/fonts'
-import { cn } from '@lib/utils'
+
+
 import '@styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import { BgTheme } from '@/lib/providers/bgTheme'
@@ -27,17 +27,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={cn(
-          inter.className,
-          lexend.variable,
-          'scrollbar-thin scrollbar-track-background scrollbar-thumb-accent min-h-screen flex flex-col'
-        )}
+       
       >
         <Providers>
           <BgTheme>

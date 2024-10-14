@@ -1,26 +1,24 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import React from 'react';
-import Image from 'next/image';
-import { Button } from '@components/ui/button';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from '@components/ui/tooltip';
-
 import MoonIcon from '../../public/moonicon.svg';
 import SunIcon from '../../public/sunicon.svg';
+import Image from 'next/image';
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
+  // const [mounted, setMounted] = useState(false);
+  // useEffect(() => {
+	// 	setMounted(true);
+	// }, []);
+
+	// if (!mounted) {
+	// 	return null;
+	// }
 
   return (
-    <TooltipProvider disableHoverableContent>
-      <Tooltip delayDuration={100}>
-        <TooltipTrigger asChild>
+    
           <button
             className="p-2"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -31,11 +29,8 @@ export function ThemeToggle() {
             ) : (
               <Image src={MoonIcon} alt="Switch to dark theme" className="w-12 h-12 " />
             )}
-            <span className="sr-only">Switch Theme</span>
+            {/* <span className="sr-only">Switch Theme</span> */}
           </button>
-        </TooltipTrigger>
-        <TooltipContent side="bottom">Switch Theme</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+      
   );
 }
