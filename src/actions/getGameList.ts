@@ -15,6 +15,7 @@ export const getGameList = async (): Promise<TResponseDto<TGameItemDto[]>> => {
     return { success: false, code: resp.status };
   }
   const mockGameList: TGameItemDto[] = await resp.json();
+  console.log("d----------------d", mockGameList)
   return {
     success: true,
     data: mockGameList,
