@@ -10,13 +10,13 @@ export const Menu = () => {
   const { theme, setTheme } = useTheme()
 
   // Close the dropdown munu when clicking the screen.
-  window.onclick = function (e) {
-    const modal = document.getElementById('theme')
-    if (modal != e.target) {
-      setShow(false)
-    }
-    console.log(modal != e.target)
-  }
+  // window.onclick = function (e) {
+  //   const modal = document.getElementById('theme')
+  //   if (modal != e.target) {
+  //     setShow(false)
+  //   }
+  //   console.log(modal != e.target)
+  // }
 
   return (
     <>
@@ -33,32 +33,32 @@ export const Menu = () => {
         {show && (
           <div
             className={`absolute top-16 -right-6 w-28 flex flex-col gap-2 ${
-              theme === 'dark' && 'text-white bg-[#1E2854]'
-            } text-[#0C4A6E] text-[18px] bg-[#CEDAED] rounded-sm p-2`}
+              theme === 'dark' ? 'text-white bg-[#1E2854]':'text-[#0C4A6E] bg-[#CEDAED] '
+            }  text-[18px] rounded-sm p-2 z-30`}
             onClick={() => setShow(false)}
           >
             <div
               className="flex gap-2 cursor-pointer"
               onClick={() => router.push('/')}
             >
-              {theme === 'dark' ? (
+              {/* {theme === 'dark' ? (
                 <img src="home2.svg" />
               ) : (
                 <img src="home.svg" />
-              )}
-              {/* <HomeIcon /> */}
+              )} */}
+              <HomeIcon />
               <span>Home</span>
             </div>
             <div
               className="flex gap-2 cursor-pointer"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              {theme === 'dark' ? (
+              {/* {theme === 'dark' ? (
                 <img src="light2.svg" />
               ) : (
                 <img src="light.svg" />
-              )}
-              {/* <ThemeIcon /> */}
+              )} */}
+              <ThemeIcon />
               <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
             </div>
           </div>

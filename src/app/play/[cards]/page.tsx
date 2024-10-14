@@ -14,6 +14,7 @@ import ButtoniconMoon from '../../../../public/buttonIconMoon.svg'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import Header from '@/components/shared/header'
+import { Menu } from '@/components/ui/menu'
 
 
 const page = () => {
@@ -21,7 +22,10 @@ const page = () => {
   const gameName="alpha"
   return (
     <div className={`h-[100vh] w-screen  ${theme==='dark'? 'text-white' :'text-[#312E81]'}`}>
-      <Header/>
+      <div className='max-sm:hidden'><Header/>
+        </div>
+      <div className='absolute top-4 right-4 '><Menu/>
+        </div>
       <div className="absolute top-36 inset-0 ml-9 flex flex-col md:flex-row  justify-between gap-4 sm:gap-8 lg:flex-row w-full">
         <div className="w-full flex-1 h-[75vh] bg-black my-4">
          fsdsdf
