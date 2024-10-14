@@ -44,7 +44,7 @@ const Page = () => {
 
   if (loading) {
     return (
-      <div className={`h-screen ${theme === 'dark' ? 'bg-gradient-to-b from-[#364AB3] to-[#00020D]' : 'bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'}`}>
+      <div className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
         Loading...
       </div>
     )
@@ -55,16 +55,16 @@ const Page = () => {
   }
 
   return (
-    <div className={`px-8 ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}>
+    <div className="px-8 dark:text-white text-[#312E81]">
       <div className="flex flex-col justify-between gap-4 sm:gap-8 lg:flex-row w-full">
         <div className="w-full">
-          <div className={`flex sm:h-[300px] lg:min-w-[600px] sm:max-w-[800px] gap-5 px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] ${theme === 'dark' ? 'bg-[#0206177A]' : 'bg-[#9FB0FD7A]'} rounded-[36px]`}>
+          <div className="flex sm:h-[300px] lg:min-w-[600px] sm:max-w-[800px] gap-5 px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] dark:bg-[#0206177A] bg-[#9FB0FD7A] rounded-[36px]">
             <div className="w-1/2 flex align-middle">
               <Card icon_url={`${selectedGameItem?.icon_url}`} name={`${selectedGameItem?.name}`} />
             </div>
             <div>
               <div className="font-medium text-[20px] sm:text-[32px] mb-8">{endpoint}</div>
-              <Link href={`/play/${selectedGameItem?.name}`} className={`flex w-fit items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${theme === 'dark' ? 'bg-[#6366F14D]' : 'bg-[#9FB0FD7A]'}`}>
+              <Link href={`/play/${selectedGameItem?.name}`} className="flex w-fit items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] dark:bg-[#6366F14D] bg-[#9FB0FD7A]">
                 <div className="font-extrabold text-[20px] sm:text-[32px]">Play</div>
               </Link>
             </div>
