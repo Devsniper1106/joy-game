@@ -4,7 +4,7 @@
 // const cardId = useParams();
 // useEffect get(api/v1, cardId);
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '@/components/ui/card'
 import cardData from '../../../../public/data/cardData.json'
 
@@ -13,33 +13,77 @@ import ButtoniconSun from '../../../../public/buttonIconSun.svg'
 import ButtoniconMoon from '../../../../public/buttonIconMoon.svg'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
-
+import { TGameItemDto } from '@/lib/types/api/model/game'
+import { getGameList } from '@/actions/getGameList'
+import { usePathname } from 'next/navigation'
 
 const page = () => {
-  const {theme}=useTheme()
-  const gameName="alpha"
+  const { theme } = useTheme()
+  const [gameItems, setGameItems] = useState<TGameItemDto[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const pathName = usePathname()
+  const endpoint = pathName.split('/').pop()
+  const selectedGameItem = gameItems.find((item) => item.name === endpoint);
+  useEffect(() => {
+    const fetchGameList = async () => {
+      const response = await getGameList()
+      if (response.success) {
+        setGameItems(response.data)
+      } else {
+        setError(`Error fetching game list: ${response.code}`)
+      }
+      setLoading(false)
+    }
+
+    fetchGameList()
+  }, [])
+  // console.log('length---->', gameItems)
+  if (loading) {
+    return <div className='h-screen'>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error}</div>
+  }
+
   return (
-    <div className={`px-8 ${theme==='dark'? 'text-white' :'text-[#312E81]'}`}>
+    <div
+      className={`px-8 ${theme === 'dark' ? 'text-white' : 'text-[#312E81]'}`}
+    >
       <div className="flex flex-col justify-between gap-4 sm:gap-8 lg:flex-row w-full">
         <div className="w-full ">
-          <div className={`flex sm:h-[300px]  lg:min-w-[600px] sm:max-w-[800px] gap-5  px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] ${theme==='dark'?'bg-[#0206177A]':' bg-[#9FB0FD7A]'}
-           rounded-[36px]`}>
-            <div className='w-1/2 flex align-middle'>
-
-            <Card
-              imageUrl="https://images.unsplash.com/photo-1597645587822-e99fa5d45d25"
-              gameName=""
-            ></Card>
+          <div
+            className={`flex sm:h-[300px]  lg:min-w-[600px] sm:max-w-[800px] gap-5  px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] ${
+              theme === 'dark' ? 'bg-[#0206177A]' : ' bg-[#9FB0FD7A]'
+            }
+           rounded-[36px]`}
+          >
+            <div className="w-1/2 flex align-middle">
+              <Card
+                icon_url={`${selectedGameItem?.icon_url}`}
+                name={`${selectedGameItem?.name}`}
+              ></Card>
             </div>
-            <div className=''>
-              <div className="font-medium text-[20px] sm:text-[32px] mb-8">Game Name</div>
-          <Link href={`/play/${gameName}`} className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${theme==='dark'?'bg-[#6366F14D]':' bg-[#9FB0FD7A]'}`}>
+            <div className="">
+              <div className="font-medium text-[20px] sm:text-[32px] mb-8">
+                {endpoint}
+              </div>
+              <Link
+                href={`/play/${selectedGameItem?.name}`}
+                className={`flex  items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] outline-4 outline-[#A3E635] ${
+                  theme === 'dark' ? 'bg-[#6366F14D]' : ' bg-[#9FB0FD7A]'
+                }`}
+              >
                 <Image
                   alt="button"
                   className="place-items-center  sm:h-[36px]  sm:w-[36px]"
-                  src={theme==='dark'?ButtoniconMoon:ButtoniconSun}
+                  src={theme === 'dark' ? ButtoniconMoon : ButtoniconSun}
                 />
-                <div className="font-extrabold text-[20px] sm:text-[32px]  ">Play</div>
+                <div className="font-extrabold text-[20px] sm:text-[32px]  ">
+                  Play
+                </div>
               </Link>
             </div>
           </div>
@@ -49,12 +93,16 @@ const page = () => {
             Enjoy Other Games
           </div>
           <div className="grid grid-cols-3 grid-flow-dense gap-x-3 gap-y-2 sm:gap-x-8 sm:gap-y-4 lg:grid-cols-2  xl:grid-cols-3 ">
-            {cardData.map((card, index) => (
+            {gameItems.map((card) => (
               <div
-                key={index}
-                className={` row-span-${card.rowNum} col-span-${card.colNum}`}
+                key={card.id}
+                className={`${
+                  card.is_hot
+                    ? 'col-span-2 row-span-2'
+                    : 'col-span-1 row-span-1'
+                }`}
               >
-                <Card imageUrl={card.imageUrl} gameName={card.gameName} />
+                <Card icon_url={card.icon_url} name={card.name} />
               </div>
             ))}
           </div>
