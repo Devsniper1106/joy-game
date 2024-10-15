@@ -81,7 +81,7 @@ const Page: React.FC = () => {
         <Header />
       </div>
       <div className="absolute top-0 right-0 z-50 overscroll-none">
-        <Menu />
+        <Menu width={60} height={60} className="mt-6 mr-1" />
       </div>
       <div className="absolute w-full z-20 top-0 sm:top-36 inset-0 sm:ml-9 flex flex-col sm:flex-row justify-between gap-4 sm:gap-8 lg:flex-row">
         <div className="w-full flex-1 h-[75vh] bg-black sm:my-4">
