@@ -61,23 +61,23 @@ const Page = () => {
   }
 
   return (
-    <div className="px-8 dark:text-white text-[#312E81]">
+    <div className="px-6 sm:px-8  dark:text-white text-[#312E81]">
       <div className="flex flex-col justify-between gap-4 sm:gap-8 lg:flex-row w-full">
         <div className="w-full">
-          <div className="flex sm:h-[300px] lg:min-w-[600px] sm:max-w-[800px] gap-5 px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] dark:bg-[#0206177A] bg-[#9FB0FD7A] rounded-[36px]">
+          <div className="flex sm:h-[300px] min-w-[300px] lg:min-w-[600px] sm:max-w-[800px] gap-5 px-[15px] py-[31px] sm:py-[45px] sm:px-[66px] dark:bg-[#0206177A] bg-[#9FB0FD7A] rounded-[36px]">
             <div className="w-1/2 flex align-middle">
               <Card
                 icon_url={`${selectedGameItem?.icon_url}`}
                 name={`${selectedGameItem?.name}`}
               />
             </div>
-            <div>
-              <div className="font-medium text-[20px] sm:text-[32px] mb-8">
+            <div className='py-4 flex flex-col '>
+              <div className="font-medium text-[20px] sm:text-[32px] py-4 sm:py-8">
                 {endpoint}
               </div>
               <Link
                 href={`/play/${selectedGameItem?.name}`}
-                className="flex w-fit items-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] border-4 border-amber-500 dark:border-lime-400 bg-[#6366F1]/30"
+                className="flex w-full items-center justify-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] border-4 border-amber-500 dark:border-lime-400 bg-[#6366F1]/30"
               >
                 <FaGamepad className="text-[20px] sm:text-[32px]" />
                 <div className="font-extrabold text-[20px] sm:text-[32px]">
@@ -87,11 +87,11 @@ const Page = () => {
             </div>
           </div>
         </div>
-        <div className="px-3 py-3 max-w-[600px] min-w-200">
+        <div className="lg:px-3 py-3 w-full lg:max-w-[600px] min-w-200">
           <div className="font-extrabold text-[16px] sm:text-[28px] pb-6 sm:pb-12">
             Enjoy Other Games
           </div>
-          <div className="grid grid-cols-3 grid-flow-dense gap-x-3 gap-y-2 sm:gap-x-8 sm:gap-y-4 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-3 grid-flow-dense gap-x-3 gap-y-2  md:grid-cols-5 lg:grid-cols-2 xl:grid-cols-3">
             {gameItems.map((card) => (
               <div
                 key={card.id}

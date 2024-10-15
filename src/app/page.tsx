@@ -62,7 +62,7 @@ export default function Home() {
     <div className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
       <Header />
       <main className="md:px-[120px] md:py-[58px] px-[28px] py-[24px] ">
-        <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:gap-10 lg:w-4/5 lg:mx-auto gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
+        <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:w-4/5 lg:mx-auto gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
           {gameItems.map((card) => (
             <div
               key={card.id}
