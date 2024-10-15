@@ -21,19 +21,31 @@ const Page: React.FC = () => {
   // Create a ref for the iframe
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
+  
   useEffect(() => {
     const fetchGameList = async () => {
-      const response = await getGameList();
-      if (response.success) {
-        setGameItems(response.data);
-      } else {
-        setError(`Error fetching game list: ${response.code}`);
+      try {
+        const response = await getGameList()
+        console.log('API Response:', response) // Debugging line
+        if (response.success) {
+          if (Array.isArray(response.data)) {
+            setGameItems(response.data)
+          } else {
+            setError('Game list is not in expected format.')
+          }
+        } else {
+          setError(`Error fetching game list: ${response.code}`)
+        }
+      } catch (err) {
+        setError('An error occurred while fetching the game list.')
+        console.error(err) // Log the error for debugging
+      } finally {
+        setLoading(false)
       }
-      setLoading(false);
-    };
+    }
 
-    fetchGameList();
-  }, []);
+    fetchGameList()
+  }, [])
  
   if (loading) {
     return <div 

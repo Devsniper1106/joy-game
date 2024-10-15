@@ -12,15 +12,27 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const { theme } = useTheme()
+  
   useEffect(() => {
     const fetchGameList = async () => {
-      const response = await getGameList()
-      if (response.success) {
-        setGameItems(response.data)
-      } else {
-        setError(`Error fetching game list: ${response.code}`)
+      try {
+        const response = await getGameList()
+        console.log('API Response:', response) // Debugging line
+        if (response.success) {
+          if (Array.isArray(response.data)) {
+            setGameItems(response.data)
+          } else {
+            setError('Game list is not in expected format.')
+          }
+        } else {
+          setError(`Error fetching game list: ${response.code}`)
+        }
+      } catch (err) {
+        setError('An error occurred while fetching the game list.')
+        console.error(err) // Log the error for debugging
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     fetchGameList()
@@ -30,11 +42,7 @@ export default function Home() {
   if (loading) {
     return (
       <div
-        className={`h-screen ${
-          theme === 'dark'
-            ? 'bg-gradient-to-b from-[#364AB3] to-[#00020D]'
-            : ' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'
-        }`}
+        className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]"
       >
         Loading...
       </div>
@@ -47,11 +55,7 @@ export default function Home() {
 
   return (
     <div
-      className={`${
-        theme === 'dark'
-          ? 'bg-gradient-to-b from-[#364AB3] to-[#00020D]'
-          : ' bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]'
-      }`}
+      className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]"
     >
       <Header />
       <main className="md:px-[120px] md:py-[58px] px-[28px] py-[24px] ">
