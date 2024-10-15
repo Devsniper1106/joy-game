@@ -12,7 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const { theme } = useTheme()
-  
+
   useEffect(() => {
     const fetchGameList = async () => {
       try {
@@ -41,10 +41,15 @@ export default function Home() {
   // console.log('length---->', gameItems)
   if (loading) {
     return (
-      <div
-        className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]"
-      >
-        Loading...
+      <div className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
+        <div className="h-screen flex items-center justify-center dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
+          <div className="flex flex-col items-center">
+            <div className="loader"></div>
+            <p className="mt-4 text-lg text-gray-800 dark:text-white">
+              Loading...
+            </p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -54,9 +59,7 @@ export default function Home() {
   }
 
   return (
-    <div
-      className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]"
-    >
+    <div className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
       <Header />
       <main className="md:px-[120px] md:py-[58px] px-[28px] py-[24px] ">
         <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:gap-10 lg:w-4/5 lg:mx-auto gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
