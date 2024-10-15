@@ -45,7 +45,14 @@ const Page = () => {
   if (loading) {
     return (
       <div className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
-        Loading...
+       <div className="h-screen flex items-center justify-center dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
+          <div className="flex flex-col items-center">
+            <div className="loader"></div>
+            <p className="mt-4 text-lg text-gray-800 dark:text-white">
+              Loading...
+            </p>
+          </div>
+        </div>
       </div>
     )
   }
