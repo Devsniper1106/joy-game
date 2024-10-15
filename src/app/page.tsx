@@ -61,8 +61,8 @@ export default function Home() {
   return (
     <div className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
       <Header />
-      <main className="md:px-[120px] md:py-[58px] px-[28px] py-[24px] ">
-        <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:gap-10 lg:w-4/5 lg:mx-auto gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
+      <main className="md:px-[120px] md:py-[58px] px-[12px] py-[12px] ">
+        <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:gap-10 lg:w-4/5 lg:mx-auto gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7">
           {gameItems.map((card) => (
             <div
               key={card.id}
@@ -72,7 +72,11 @@ export default function Home() {
                   : 'col-span-1 row-span-1 '
               }`}
             >
-              <Card className="" icon_url={card.icon_url} name={card.name} />
+              <Card
+                className="aspect-square"
+                icon_url={card.icon_url}
+                name={card.name}
+              />
             </div>
           ))}
           {/* Additional empty grid cells can go here if needed */}
