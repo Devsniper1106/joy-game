@@ -81,10 +81,10 @@ const Page: React.FC = () => {
         <Header />
       </div>
       <div className="absolute top-0 right-0 z-50 overscroll-none">
-        <Menu />
+        <Menu width={60} height={60} className="mt-6 mr-1" />
       </div>
       <div className="absolute w-full z-20 top-0 sm:top-36 inset-0 sm:ml-9 flex flex-col sm:flex-row justify-between gap-4 sm:gap-8 lg:flex-row">
-        <div className="w-full flex-1 h-[75vh] bg-black sm:my-4">
+        <div className="w-full flex-1 h-[75vh] sm:my-4">
           {selectedGameItem ? (
             <iframe
               ref={iframeRef}
@@ -98,14 +98,14 @@ const Page: React.FC = () => {
             <div>No game selected.</div>
           )}
         </div>
-        <div className="w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[110px] sm:px-2 sm:h-full sm:w-[280px]">
+        <div className="w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[100px] sm:px-2 sm:h-full sm:w-[280px]">
           <div className="flex align-middle flex-row flex-nowrap  gap-2 sm:gap-4 sm:p-8  sm:flex-col sm:w-full sm:h-fit">
             {gameItems.map((card) => (
               <div key={card.id} className=" ">
                 <Card
                   icon_url={card.icon_url}
                   name={card.name}
-                  className="max-sm:h-[80px] max-sm:w-[80px]"
+                  className="max-sm:h-[80px] max-sm:w-[80px] aspect-square"
                 />
               </div>
             ))}

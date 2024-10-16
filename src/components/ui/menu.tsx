@@ -4,7 +4,12 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { HomeIcon, MenuIcon, ThemeIcon } from './icon'
 
-export const Menu = () => {
+export type IMenuProps = {
+  width?: number
+  height?: number
+  className?: string | undefined
+}
+export const Menu = ({ className, ...rest }: IMenuProps) => {
   const [show, setShow] = useState<boolean>(false)
   const router = useRouter()
   const { theme, setTheme } = useTheme()
@@ -31,31 +36,34 @@ export const Menu = () => {
   }, [])
 
   return (
-    <div className="relative sm:hidden flex flex-col" ref={accountBtn}>
-      <button onClick={() => setShow(!show)}>
-        <MenuIcon />
+    <div
+      className={`relative sm:hidden flex flex-col ${className}`}
+      ref={accountBtn}
+    >
+      <button className="relative" onClick={() => setShow(!show)}>
+        <MenuIcon {...rest} />
+        {show && (
+          <div
+            className="absolute top-10 -right-2 w-28 flex flex-col gap-2 
+           dark:text-white dark:bg-[#1E2854]/90 text-[#0C4A6E] bg-[#CEDAED]/90 text-[18px] rounded-sm p-2 z-30"
+          >
+            <div
+              className="flex gap-2 cursor-pointer"
+              onClick={() => router.push('/')}
+            >
+              <HomeIcon />
+              <span>Home</span>
+            </div>
+            <div
+              className="flex gap-2 cursor-pointer"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              <ThemeIcon />
+              <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+            </div>
+          </div>
+        )}
       </button>
-      {show && (
-        <div
-          className="absolute top-16 -right-2 w-28 flex flex-col gap-2 
-           dark:text-white dark:bg-[#1E2854] text-[#0C4A6E] bg-[#CEDAED] text-[18px] rounded-sm p-2 z-30"
-        >
-          <div
-            className="flex gap-2 cursor-pointer"
-            onClick={() => router.push('/')}
-          >
-            <HomeIcon />
-            <span>Home</span>
-          </div>
-          <div
-            className="flex gap-2 cursor-pointer"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
-            <ThemeIcon />
-            <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
