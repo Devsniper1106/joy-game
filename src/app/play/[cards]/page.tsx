@@ -81,7 +81,7 @@ const Page: React.FC = () => {
       <div className="max-sm:hidden">
         <Header />
       </div>
-      <Link href='/' className="absolute top-1/2 left-0 z-50 overscroll-none">
+      <Link href='/' className="absolute top-1/2 left-0 z-50 overscroll-none sm:hidden">
         <img  className='dark:hidden' src="/lightHomeButton.svg"/>
         <img  className='dark:block hidden' src="/darkHomeButton.svg"/> 
         {/* <Menu width={60} height={60} className="mt-6 mr-1" /> */}
