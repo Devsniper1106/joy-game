@@ -71,13 +71,13 @@ const Page = () => {
                 name={`${selectedGameItem?.name}`}
               />
             </div>
-            <div className="py-4 flex flex-col ">
-              <div className="font-medium text-[20px] sm:text-[32px] py-4 sm:py-8">
+            <div className="py-4 flex flex-col justify-center">
+              <div className="font-medium text-[20px] sm:text-[32px] pb-4 sm:py-8">
                 {endpoint}
               </div>
               <Link
                 href={`/play/${selectedGameItem?.name}`}
-                className="flex w-full items-center justify-center px-4 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] border-4 border-amber-500 dark:border-lime-400 bg-[#6366F1]/30"
+                className="flex sm:w-full items-center justify-center px-2 mx-2 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] border-4 border-amber-500 dark:border-lime-400 bg-[#6366F1]/30"
               >
                 <FaGamepad className="text-[20px] sm:text-[32px]" />
                 <div className="font-extrabold text-[20px] sm:text-[32px]">

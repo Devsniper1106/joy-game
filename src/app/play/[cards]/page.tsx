@@ -8,6 +8,7 @@ import { getGameList } from '@/actions/getGameList'
 import { usePathname } from 'next/navigation'
 import { TGameItemDto } from '@/lib/types/api/model/game'
 import Link from 'next/link'
+import Footer from '@/components/shared/footer'
 
 const Page: React.FC = () => {
   const { theme } = useTheme()
@@ -74,33 +75,35 @@ const Page: React.FC = () => {
   console.log('theme---->', theme)
   return (
     <div
-      className={`h-screen w-screen ${
+      className={`mx-auto h-screen  ${
         theme === 'dark' ? 'text-white' : 'text-[#312E81]'
       }`}
     >
-      <div className="max-sm:hidden">
+      <div className="max-sm:hidden ">
         <Header />
       </div>
-      <Link href='/' className="absolute top-1/2 left-0 z-50 overscroll-none sm:hidden">
-        <img  className='dark:hidden' src="/lightHomeButton.svg"/>
-        <img  className='dark:block hidden' src="/darkHomeButton.svg"/> 
+      <Link
+        href="/"
+        className="absolute top-1/2 left-0 z-50 overscroll-none sm:hidden"
+      >
+        <img className="dark:hidden" src="/lightHomeButton.svg" />
+        <img className="dark:block hidden" src="/darkHomeButton.svg" />
         {/* <Menu width={60} height={60} className="mt-6 mr-1" /> */}
       </Link>
-      <div className="absolute w-full z-20 top-0 sm:top-36 inset-0 sm:ml-9 flex flex-col sm:flex-row justify-between gap-4 sm:gap-8 lg:flex-row">
-        <div className="w-full flex-1 h-[75vh] sm:my-4">
-          {selectedGameItem ? (
-            <iframe
-              ref={iframeRef}
-              src={selectedGameItem.link_url}
-              className="flex-1 w-full h-full"
-              title={selectedGameItem.name}
-              // frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <div>No game selected.</div>
-          )}
-        </div>
+      <div className="absolute inset-0 top-0 sm:top-36  flex flex-col sm:flex-row  gap-4 sm:gap-8 sm:my-4 sm:ml-9 ">
+        {selectedGameItem ? (
+          <iframe
+            ref={iframeRef}
+            src={selectedGameItem.link_url}
+            className="flex-1"
+            title={selectedGameItem.name}
+            // frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <div>No game selected.</div>
+        )}
+
         <div className="w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[100px] sm:px-2 sm:h-full sm:w-[280px]">
           <div className="flex align-middle flex-row flex-nowrap  gap-2 sm:gap-4 sm:p-8  sm:flex-col sm:w-full sm:h-fit">
             {gameItems.map((card) => (
