@@ -32,14 +32,14 @@ export function ThemeToggle() {
   return (
     
           <button
-            className="p-2 max-sm:hidden"
+            className="p-2 "
             onClick={() =>{setTheme(theme === 'light' ? 'dark':'light')} }
             aria-label="Switch theme"
           >
            
-              <Image src={SunIcon} alt="Switch to light theme" className="w-12 h-12  dark:hidden " />
+              <Image src={SunIcon} alt="Switch to light theme" className="w-6 h-6 md:w-12 md:h-12  dark:hidden " />
           
-              <Image src={MoonIcon} alt="Switch to dark theme" className="w-12 h-12 dark:block hidden" />
+              <Image src={MoonIcon} alt="Switch to dark theme" className="w-6 h-6 md:w-12 md:h-12 dark:block hidden" />
           
           
           </button>
