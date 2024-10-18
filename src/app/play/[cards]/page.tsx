@@ -22,7 +22,7 @@ const Page: React.FC = () => {
 
   // Create a ref for the iframe
   const iframeRef = useRef<HTMLIFrameElement | null>(null)
-
+ 
   useEffect(() => {
     const fetchGameList = async () => {
       try {
@@ -72,14 +72,24 @@ const Page: React.FC = () => {
   if (error) {
     return <div>{error}</div>
   }
-  console.log('theme---->', theme)
+  // console.log('theme---->', theme)
+  const data = "Bear_Boom, CarSpeedCount";
+  const validNames = data.split(", ").map(name => name.trim());
+
+  // Check if the selectedGameItem.name is in the validNames array
+  const className = 
+  selectedGameItem && 
+  typeof selectedGameItem.name === 'string' && 
+  validNames.includes(selectedGameItem.name)
+    ? "w-[45vh] h-full mx-auto my-auto min-[200px]"
+    : "h-full w-full";
   return (
     <div
       className={`mx-auto h-screen  ${
         theme === 'dark' ? 'text-white' : 'text-[#312E81]'
       }`}
     >
-      <div className="max-sm:hidden ">
+      <div className="max-md:hidden ">
         <Header />
       </div>
       <Link
@@ -90,21 +100,26 @@ const Page: React.FC = () => {
         <img className="dark:block hidden" src="/darkHomeButton.svg" />
         {/* <Menu width={60} height={60} className="mt-6 mr-1" /> */}
       </Link>
-      <div className="absolute inset-0 top-0 sm:top-36  flex flex-col sm:flex-row  gap-4 sm:gap-8 sm:my-4 sm:ml-9 ">
+      <div className="absolute inset-0 top-0 md:top-16 lg:top-36  flex flex-col sm:flex-row  gap-4 sm:gap-8 sm:my-4 sm:ml-9 ">
         {selectedGameItem ? (
-          <iframe
+          <div className='flex-1  h-full'>
+          <iframe 
             ref={iframeRef}
             src={selectedGameItem.link_url}
-            className="flex-1"
+            // width='400'
+            // height='800'
+            // src='https://html5.gamemonetize.co/32dortup9kyyrhcu2tei4beskb9y62jf/indexGame.html'
+            className={className}
             title={selectedGameItem.name}
             // frameBorder="0"
-            allowFullScreen
-          ></iframe>
+            // allowFullScreen
+            ></iframe>
+           </div>
         ) : (
           <div>No game selected.</div>
         )}
 
-        <div className="w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[100px] sm:px-2 sm:h-full sm:w-[280px]">
+        <div className=" w-full sm:p-4 overflow-x-auto overflow-y-hidden sm:overflow-hidden sm:overflow-y-auto h-[100px] sm:px-2 sm:h-full sm:w-[150px] md:w-[160px] lg:w-[280px]">
           <div className="flex align-middle flex-row flex-nowrap  gap-2 sm:gap-4 sm:p-8  sm:flex-col sm:w-full sm:h-fit">
             {gameItems.map((card) => (
               <div key={card.id} className=" ">
