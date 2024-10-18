@@ -72,17 +72,7 @@ const Page: React.FC = () => {
   if (error) {
     return <div>{error}</div>
   }
-  // console.log('theme---->', theme)
-  const data = "Bear_Boom, CarSpeedCount";
-  const validNames = data.split(", ").map(name => name.trim());
-
-  // Check if the selectedGameItem.name is in the validNames array
-  const className = 
-  selectedGameItem && 
-  typeof selectedGameItem.name === 'string' && 
-  validNames.includes(selectedGameItem.name)
-    ? "w-[45vh] h-full mx-auto my-auto min-[200px]"
-    : "h-full w-full";
+ 
   return (
     <div
       className={`mx-auto h-screen  ${
@@ -100,16 +90,13 @@ const Page: React.FC = () => {
         <img className="dark:block hidden" src="/darkHomeButton.svg" />
         {/* <Menu width={60} height={60} className="mt-6 mr-1" /> */}
       </Link>
-      <div className="absolute inset-0 top-0 md:top-16 lg:top-36  flex flex-col sm:flex-row  gap-4 sm:gap-8 sm:my-4 sm:ml-9 ">
+      <div className="absolute inset-0 top-0 md:top-16  flex flex-col sm:flex-row  gap-4 sm:gap-8 sm:my-4 sm:ml-9 ">
         {selectedGameItem ? (
-          <div className='flex-1  h-full'>
+          <div className='flex-1 overflow-hidden  h-full'>
           <iframe 
             ref={iframeRef}
             src={selectedGameItem.link_url}
-            // width='400'
-            // height='800'
-            // src='https://html5.gamemonetize.co/32dortup9kyyrhcu2tei4beskb9y62jf/indexGame.html'
-            className={className}
+            className=" w-full h-full sm:w-[50vh] mx-auto my-auto "
             title={selectedGameItem.name}
             // frameBorder="0"
             // allowFullScreen
