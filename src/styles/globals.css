@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: linear-gradient(to bottom, #E6EAFF, #8696E7);
-   --foreground: 226 70% 1%;
+    --background: linear-gradient(to bottom, #e6eaff, #8696e7);
+    --foreground: 226 70% 1%;
     --muted: 196 11% 86%;
     --muted-foreground: 196 11% 29%;
     --popover: 226 68% 98%;
@@ -27,7 +27,7 @@
   }
 
   .dark {
-    --background: linear-gradient(to bottom, #364AB3, #00020D);
+    --background: linear-gradient(to bottom, #364ab3, #00020d);
     --foreground: 226 26% 100%;
     --muted: 196 11% 14%;
     --muted-foreground: 196 11% 71%;
@@ -63,4 +63,53 @@
 .my-masonry-grid_column {
   padding-left: 30px; /* Adjust based on your layout */
   background-clip: padding-box;
+}
+
+.fullScreenIFrameWithoutHeaderSpacing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.fullScreenIFrameWithHeaderSpacing {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 5rem);
+}
+
+@media (max-width: 768px) {
+  .fullScreenIFrameWithHeaderSpacing {
+    height: calc(100vh - 4rem);
+  }
+}
+
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.container1 {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.container1 > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
