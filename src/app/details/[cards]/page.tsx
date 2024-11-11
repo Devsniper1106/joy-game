@@ -54,12 +54,12 @@ const Page = () => {
         </div>
       </div>
     )
+
   }
 
   if (error) {
     return <div>{error}</div>
   }
-
   return (
     <div className="md:px-6 px-4 dark:text-white text-[#312E81]]">
       <div className="flex flex-col justify-between gap-4 sm:gap-8 lg:flex-row w-full">
@@ -77,7 +77,9 @@ const Page = () => {
               </div>
               <Link
                 href={`/play/${selectedGameItem?.name}`}
+
                 className="flex sm:w-full items-center justify-center px-2 mx-2 sm:px-12 py-1 sm:py-3 gap-2 sm:gap-6 rounded-[36px] border-4 border-amber-500 dark:border-lime-400 bg-[#6366F1]/30"
+
               >
                 <FaGamepad className="text-[20px] sm:text-[32px]" />
                 <div className="font-extrabold text-[20px] sm:text-[32px]">

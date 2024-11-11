@@ -8,7 +8,9 @@ export const BgTheme = ({children,
     const {theme}=useTheme()
     console.log("📞",theme)
     return(
+
     <div className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
+
         {children}
     </div>
     )

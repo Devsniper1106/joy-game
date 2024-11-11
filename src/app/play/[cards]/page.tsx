@@ -45,6 +45,7 @@ const Page: React.FC = () => {
       }
     }
 
+
     fetchGameList()
   }, [])
 
@@ -67,12 +68,13 @@ const Page: React.FC = () => {
         </div>
       </div>
     )
+
   }
 
   if (error) {
     return <div>{error}</div>
   }
- 
+
   return (
     <div
       className={`mx-auto h-screen  ${

@@ -40,6 +40,7 @@ export default function Home() {
   console.log('theme---->', theme)
   // console.log('length---->', gameItems)
   if (loading) {
+
     return (
       <div className="h-screen dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
         <div className="h-screen flex items-center justify-center dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
@@ -52,6 +53,7 @@ export default function Home() {
         </div>
       </div>
     )
+
   }
 
   if (error) {
@@ -59,10 +61,12 @@ export default function Home() {
   }
 
   return (
+
     <div className="dark:bg-gradient-to-b dark:from-[#364AB3] dark:to-[#00020D] bg-gradient-to-b from-[#E6EAFF] to-[#8696E7]">
       <Header />
       <main className="md:px-[120px] md:py-[58px] px-[12px] py-[12px] ">
         <div className="grid w-full h-full grid-flow-dense grid-cols-3 lg:w-4/5 lg:mx-auto sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 gap-4">
+
           {gameItems.map((card) => (
             <div
               key={card.id}
